@@ -14,7 +14,7 @@ public class SearchPage {
     WebDriver driver = getChromeWebDriver();
     WebDriverWait wait = getWebDriverWait();
 
-    public void filterBySkillLevel(String value){
+    public SearchPage filterBySkillLevel(String value){
 
         driver.findElement(By.xpath("//div[contains(@class, 'search-filter-header') and contains(.,'Skill Levels')]"))
                 .click();
@@ -25,9 +25,10 @@ public class SearchPage {
                 .click();
 
         explicitWait();
+        return this;
     }
 
-    public void filterByRole(String role){
+    public SearchPage filterByRole(String role){
         driver.findElement(By.xpath("//div[contains(@class, 'search-filter-header') and contains(.,'Roles')]"))
                 .click();
 
@@ -37,11 +38,14 @@ public class SearchPage {
                 .click();
 
         explicitWait();
+
+        return this;
     }
 
-    public void selectTabCourse(){
+    public SearchPage selectTabCourse(){
         driver.findElement(By.xpath("//a[contains(@class, 'tab') and contains(., 'Courses')]"))
                 .click();
+        return this;
     }
 
     public void selectCourse(String courseName){

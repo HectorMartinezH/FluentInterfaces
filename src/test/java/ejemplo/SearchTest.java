@@ -14,12 +14,12 @@ public class SearchTest extends BaseTestClass {
     public void basicFilterByTest() {
         home.search("Java");
 
-        search.filterBySkillLevel("Beginner");
-        search.filterByRole("Software Development");
-        search.selectTabCourse();
-        search.selectCourse("Java Fundamentals: The Java Language");
+        search.filterBySkillLevel("Beginner")
+                .filterByRole("Software Development")
+                .selectTabCourse()
+                .selectCourse("Java Fundamentals: The Java Language");
 
-        course.verifyCoursePreviewIsDisplayed();
-        course.verifyFreeTrialIsDisplayed();
+        course.verifyCoursePreviewIsDisplayed()
+                .verifyFreeTrialIsDisplayed();
     }
 }

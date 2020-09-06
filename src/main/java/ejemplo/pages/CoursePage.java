@@ -9,13 +9,15 @@ import static ejemplo.DriverFactory.getChromeWebDriver;
 public class CoursePage {
     private WebDriver driver = getChromeWebDriver();
 
-    public void verifyFreeTrialIsDisplayed(){
+    public CoursePage verifyFreeTrialIsDisplayed(){
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id='course-page-hero']//div[@class='ps-button section'][1]"))
                 .isDisplayed());
+        return this;
     }
 
-    public void verifyCoursePreviewIsDisplayed(){
+    public CoursePage verifyCoursePreviewIsDisplayed(){
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id='course-page-hero']//div[@class='ps-button section'][2]"))
                 .isDisplayed());
+        return this;
     }
 }

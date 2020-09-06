@@ -1,6 +1,6 @@
 package ejemplo;
 
-import ejemplo.pages.CoursePage;
+import ejemplo.pages.CommonVerification;
 import ejemplo.pages.HomePage;
 import ejemplo.pages.search.Role;
 import ejemplo.pages.search.SearchPage;
@@ -8,14 +8,16 @@ import ejemplo.pages.search.SkillLevel;
 import ejemplo.pages.search.Tab;
 import org.testng.annotations.Test;
 
-import static ejemplo.pages.CoursePage.getCoursePage;
+import static ejemplo.pages.CommonVerification.getCommonVerification;
+import static ejemplo.pages.CoursePage.coursePreviewButton;
+import static ejemplo.pages.CoursePage.freeTrialButton;
 import static ejemplo.pages.HomePage.getHomePage;
 import static ejemplo.pages.search.SearchPage.getSearchPage;
 
 public class SearchTest extends BaseTestClass {
     HomePage home = getHomePage();
     SearchPage search = getSearchPage();
-    CoursePage course = getCoursePage();
+    CommonVerification commonVerification = getCommonVerification();
 
     @Test
     public void basicFilterByTest() {
@@ -26,7 +28,7 @@ public class SearchTest extends BaseTestClass {
                 .selectTab(Tab.COURSES)
                 .selectCourse("Java Fundamentals: The Java Language");
 
-        course.verifyCoursePreviewIsDisplayed()
-                .verifyFreeTrialIsDisplayed();
+        commonVerification.verifyIsDisplayed(coursePreviewButton())
+                            .verifyIsDisplayed(freeTrialButton());
     }
 }

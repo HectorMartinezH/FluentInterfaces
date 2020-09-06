@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import static ejemplo.pages.course.CoursePage.*;
 import static ejemplo.pages.home.HomePage.getHomePage;
 import static ejemplo.pages.search.SearchPage.getSearchPage;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchTest extends BaseTestClass {
     HomePage home = getHomePage();
@@ -30,7 +31,23 @@ public class SearchTest extends BaseTestClass {
                 .selectCourse("Java Fundamentals: The Java Language");
 
         coursePage.verify()
-                .verifyIsDisplayed(coursePreviewButton())
-                .verifyIsDisplayed(freeTrialButton());
+                .isDisplayed(coursePreviewButton())
+                .isDisplayed(freeTrialButton());
+    }
+
+    @Test
+    public void searchListCheck() {
+        home.act()
+                .search("Java");
+
+        search.act()
+                .filterBySkillLevel(SkillLevel.BEGINNER)
+                .filterByRole(Role.SOFTWARE_DEVELOPMENT)
+                .selectTab(Tab.COURSES);
+        
+        assertThat(search.get().courses())
+                .hasSize(25)
+                .containsOnlyOnce("Java Fundamentals: The Java Language")
+                .doesNotContain("Python");
     }
 }

@@ -10,12 +10,12 @@ public class CourseVerifyController {
 
     WebDriver driver = getChromeWebDriver();
 
-    public CourseVerifyController verifyIsDisplayed(By element) {
+    public CourseVerifyController isDisplayed(By element) {
         Assert.assertTrue(driver.findElement(element).isDisplayed());
         return this;
     }
 
-    public CourseVerifyController verifyIsNotDisplayed(By element) {
+    public CourseVerifyController isNotDisplayed(By element) {
         Assert.assertFalse(driver.findElement(element).isDisplayed());
         return this;
     }

@@ -14,6 +14,12 @@ public class SearchPage {
     WebDriver driver = getChromeWebDriver();
     WebDriverWait wait = getWebDriverWait();
 
+    private SearchPage() {}
+
+    public static SearchPage getSearchPage() {
+        return new SearchPage();
+    }
+
     public SearchPage filterBySkillLevel(String value){
 
         driver.findElement(By.xpath("//div[contains(@class, 'search-filter-header') and contains(.,'Skill Levels')]"))
